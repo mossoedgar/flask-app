@@ -1,3 +1,6 @@
+import sys
+sys.path.append("/root/flask-app")
+
 import dash
 from dash import html
 from dash import dcc
@@ -14,14 +17,15 @@ from requests import options
 import numpy as np
 import pandas as pd
 
-from .data_process import create_df, cleanFigureData
-
-
+from data_process import create_df, cleanFigureData
+#from . import init_app
+#import package
 
 def init_dashboard(server):
     """Create a Plotly Dash dashboard."""
 
     df,options_dict = create_df()
+    df_init = df[df['entidad_federativa'] == "Ciudad de México"]
 
     dash_app = dash.Dash(
         name='Dashboard',
@@ -48,7 +52,8 @@ def init_dashboard(server):
 
                         html.Div([
                             dcc.Dropdown(
-                                #df['municipio'].unique(),
+                                df_init['municipio'].unique(),
+				'Benito Juárez',
                                 #'Selecciona un Municipio',
                                 id = 'dropdown-municipio'
                                 #options=[

@@ -1,3 +1,8 @@
+import sys,os
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(1, '/root/flask-app')
+
 from flask import Flask
 
 def init_app():
@@ -8,10 +13,10 @@ def init_app():
     with app.app_context():
 
         # Import parts of our core Flask app
-        from . import routes
+        import routes
 
         # Import Dash application
-        from .app import init_dashboard
+        from app import init_dashboard
         app = init_dashboard(app)
 
         return app
