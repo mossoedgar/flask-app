@@ -34,7 +34,7 @@ def init_dashboard(server):
 
     dash_app.layout = html.Div(id = 'parent', children = [
                     html.H1(id = 'H1', 
-                            children = 'Dashboard Demográfico de México', 
+                            children = 'Dashboard de Vivienda en México', 
                             style = {'textAlign':'center',
                                     'marginTop':40,
                                     'marginBottom':40
